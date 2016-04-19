@@ -4,7 +4,13 @@ QT += qml quick widgets
 
 CONFIG += c++11
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    weeklymenumodel.cpp \
+    weeklymenu.cpp
+
+HEADERS += \
+    weeklymenumodel.h \
+    weeklymenu.h
 
 RESOURCES += qml.qrc
 

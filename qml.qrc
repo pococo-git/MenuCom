@@ -1,8 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
+        <file>MainForm.qml</file>
         <file>ShoppingListForm.qml</file>
         <file>WeeklyMenuForm.qml</file>
+        <file>WeeklyMenuDelegate.qml</file>
+        <file>MenuEditDialog.qml</file>
     </qresource>
 </RCC>

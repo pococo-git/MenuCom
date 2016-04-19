@@ -6,16 +6,36 @@ Item {
     width: 640
     height: 480
 
+    property var wmModel
+    property alias uploadButton: uploadButton
+    property alias importButton: importButton
+    property alias settingButton: settingButton
+    property alias tabView: tabView
+    property string fileName
 
     RowLayout {
         id: syncLayout
         height: 50
         Button {
-            text: "Sync"
+            id: uploadButton
+            text: "Upload"
+        }
+        Button {
+            id: importButton
+            text: "Import"
+        }
+        Button {
+            id: settingButton
+            text: "Setting"
+        }
+        Label {
+            id: wmfileName
+            text: "File : " + fileName
         }
     }
 
     TabView {
+        id: tabView
         anchors.top: syncLayout.bottom
         anchors.topMargin: 5
         anchors.bottom: parent.bottom
@@ -26,7 +46,9 @@ Item {
             anchors.fill: parent
             title: qsTr("Weekly")
             WeeklyMenuForm {
+                id: wmForm
                 anchors.fill: parent
+                weeklyMenuMoel: wmModel
             }
         }
         Tab {

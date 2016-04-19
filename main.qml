@@ -2,6 +2,8 @@ import QtQuick 2.6
 import QtQuick.Controls 1.5
 import QtQuick.Dialogs 1.2
 
+import WeeklyMenuModel 1.0
+
 ApplicationWindow {
     visible: true
     width: 640
@@ -33,17 +35,55 @@ ApplicationWindow {
         }
     }
 
-    MainForm {
-        anchors.fill: parent
+    WeeklyMenuModel {
+        id: wModel
     }
 
-    MessageDialog {
-        id: messageDialog
-        title: qsTr("May I have your attention, please?")
+    MainForm {
+        id: mainForm
+        anchors.fill: parent
+        wmModel: wModel
+        uploadButton.onClicked: dataUpload()
+        importButton.onClicked: dataImport()
+        settingButton.onClicked: fileDialog.visible = true
+        fileName: wModel.filePath
+    }
 
-        function show(caption) {
-            messageDialog.text = caption;
-            messageDialog.open();
+    FileDialog {
+        id: fileDialog
+        title: "Please choose a file"
+        folder: shortcuts.home
+        selectMultiple: false
+        selectFolder: false
+        nameFilters: ["CSV files (*.csv)"]
+        onAccepted: {
+            console.log("You chose: " + fileDialog.fileUrls)
+            visible = false
+            wmFileUpdate(fileDialog.fileUrl)
+        }
+        onRejected: {
+            console.log("Canceled")
+            visible = false
+        }
+        Component.onCompleted: visible = false
+    }
+
+    function wmFileUpdate(file) {
+        console.debug("Weekly Menu File Update : " + file)
+        wModel.filePath = file
+    }
+
+    function dataUpload() {
+        if (mainForm.tabView.currentIndex == 0) {
+            wModel.uploadFlag = true
+            wModel.sync()
+        }
+    }
+
+    function dataImport() {
+        if (mainForm.tabView.currentIndex == 0) {
+            wModel.importFlag = true
+            wModel.sync()
         }
     }
 }
