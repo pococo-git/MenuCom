@@ -15,7 +15,7 @@ Item {
         spacing: 5
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            text: date.toLocaleDateString();
+            text: date.getMonth()+1 + "/" + date.getDate()
         }
 
         Rectangle {
@@ -71,4 +71,5 @@ Item {
             }
         }
     }
+
 }
