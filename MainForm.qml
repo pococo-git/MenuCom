@@ -51,24 +51,24 @@ Item {
                 weeklyMenuMoel: wmModel
             }
         }
-        Tab {
-            id: mTab
-            anchors.fill: parent
-            title: qsTr("Monthly")
+//        Tab {
+//            id: mTab
+//            anchors.fill: parent
+//            title: qsTr("Monthly")
 
-            RowLayout {
-                anchors.centerIn: parent
-                Button {
-                    id: button1
-                    text: qsTr("Press Me 1")
-                }
+//            RowLayout {
+//                anchors.centerIn: parent
+//                Button {
+//                    id: button1
+//                    text: qsTr("Press Me 1")
+//                }
 
-                Button {
-                    id: button2
-                    text: qsTr("Press Me 2")
-                }
-            }
-        }
+//                Button {
+//                    id: button2
+//                    text: qsTr("Press Me 2")
+//                }
+//            }
+//        }
         Tab {
             id: lTab
             anchors.fill: parent
