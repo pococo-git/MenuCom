@@ -1,14 +1,24 @@
 import QtQuick 2.6
 import QtQuick.Controls 1.5
 import QtQuick.Dialogs 1.2
+import Qt.labs.settings 1.0
 
 import WeeklyMenuModel 1.0
 
 ApplicationWindow {
+    id: window
     visible: true
     width: 640
     height: 480
     title: qsTr("MenuCom")
+
+    Settings {
+        property alias x: window.x
+        property alias y: window.y
+        property alias width: window.width
+        property alias height: window.height
+        property alias filePath: wModel.filePath
+    }
 
     menuBar: MenuBar {
         Menu {
